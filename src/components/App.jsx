@@ -1,4 +1,6 @@
 import { nanoid } from "nanoid";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Component } from "react";
 import { Subtitle, Title } from "./App.styled";
 import { ContactForm } from "./ContactForm/ContactForm";
@@ -28,11 +30,10 @@ export class App extends Component {
     });
 
     const result = newName
-      ? alert(`${name} is already in contacts`)
+      ? toast.error(`${name} is already in contacts`, {position: "top-center"})
       : this.setState((prevState) => ({
         contacts: [contact, ...prevState.contacts],
       }))
-    
     return result;
   };
 
@@ -67,6 +68,7 @@ export class App extends Component {
           contacts={this.filterContacts()}
           deleteContact={this.deleteContact}
         />
+        <ToastContainer/>
       </>
     )  
   }
