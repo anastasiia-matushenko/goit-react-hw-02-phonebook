@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { Button, Item } from "./ContactsItem.styled";
 
 export const ContactsItem = ({ idContact, contact, number, deleteContact }) => {
-    console.log("ContactsItem: ", idContact);
     return (
         <Item>
             <span>{contact}: </span><span>{number}</span>

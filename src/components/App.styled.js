@@ -14,4 +14,10 @@ const Subtitle = styled.h2`
     color: #1F3349;
 `;
 
-export { Title, Subtitle };
+const Message = styled.p`
+    color: red;
+    text-align: center;
+    letter-spacing: 0.02em;
+`;
+
+export { Title, Subtitle, Message };

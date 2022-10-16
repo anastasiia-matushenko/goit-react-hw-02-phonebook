@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Component } from "react";
-import { Subtitle, Title } from "./App.styled";
+import { Message, Subtitle, Title } from "./App.styled";
 import { ContactForm } from "./ContactForm/ContactForm";
 import { ContactsList } from "./ContactsList/ContactsList";
 import { Filter } from "./Filter/Filter";
@@ -58,16 +58,19 @@ export class App extends Component {
 
   render() {
     const { filter } = this.state;
+    const contacts = this.filterContacts();
     return (
       <>
         <Title>Phonebook</Title>
         <ContactForm addContacts={this.addContacts} />
         <Subtitle>Contacts</Subtitle>
         <Filter value={filter} onChange={this.handleChange} />
-        <ContactsList
-          contacts={this.filterContacts()}
+        {contacts.length > 0
+          ? <ContactsList
+          contacts={contacts}
           deleteContact={this.deleteContact}
-        />
+          />
+          : <Message>❌ Your query did not find anything</Message>}
         <ToastContainer/>
       </>
     )  
